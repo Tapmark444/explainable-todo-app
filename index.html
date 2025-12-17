@@ -1,29 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Explainable To-Do App</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
+  <!-- Header -->
+  <div class="header">
+    <h1>Explainable To-Do App</h1>
+    <button id="modeToggle" onclick="toggleMode()">🌙 Dark Mode</button>
+  </div>
 
-  <h1>Explainable To-Do App</h1>
-
+  <!-- Task Input Box -->
   <div class="task-box">
-    <input id="task" placeholder="Task name">
-    
+    <input
+      id="task"
+      type="text"
+      placeholder="Task name"
+    />
+
     <select id="difficulty">
       <option value="1">Easy</option>
       <option value="2">Medium</option>
       <option value="3">Hard</option>
     </select>
 
-    <input id="time" type="number" placeholder="Time (hours)">
-    <button onclick="addTask()">Add Task</button>
+    <input
+      id="time"
+      type="number"
+      placeholder="Time"
+      min="1"
+    />
+
+    <select id="timeUnit">
+      <option value="minutes">Minutes</option>
+      <option value="hours" selected>Hours</option>
+      <option value="days">Days</option>
+    </select>
+
+    <button class="add-btn" onclick="addTask()">➕ Add Task</button>
   </div>
 
+  <!-- Task List -->
   <ul id="taskList"></ul>
 
+  <!-- Script -->
   <script src="script.js"></script>
 </body>
 </html>
+
