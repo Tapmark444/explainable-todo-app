@@ -1,12 +1,259 @@
+/* Base */
 body {
-  font-family: Arial;
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  margin: 0;
   padding: 20px;
+  transition: background 0.4s, color 0.4s;
+  color: #222;
 }
 
-.task-box input, select, button {
-  margin: 5px;
+/* Dark mode */
+body.dark {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #f1f1f1;
 }
 
-li {
+/* Top bar */
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.top-bar h1 {
+  flex: 1;
+  text-align: center;
+  margin: 0;
+}
+
+#modeToggle {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+/* Task input area */
+.task-box {
+  margin: 30px auto;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.task-box input,
+.task-box select {
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+}
+
+/* Funky button */
+.add-btn {
+  background: linear-gradient(135deg, #ff512f, #dd2476);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.add-btn:hover {
+  transform: scale(1.08);
+}
+
+/* Task list */
+#taskList {
+  list-style: none;
+  padding: 0;
+  max-width: 700px;
+  margin: auto;
+}
+
+/* Task animation */
+.task-item {
+  background: rgba(255,255,255,0.85);
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 15px;
+  animation: slideIn 0.5s ease;
+}
+
+body.dark .task-item {
+  background: rgba(0,0,0,0.4);
+}
+
+/* Animation */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Task text */
+.task-name {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* Priority badges */
+.priority-badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  margin-left: 10px;
+  color: white;
+}
+
+.priority-high {
+  background: #e53935;
+}
+
+.priority-medium {
+  background: #fbc02d;
+  color: black;
+}
+
+.priority-low {
+  background: #43a047;
+}
+
+/* Explanation */
+.explanation {
+  margin-top: 8px;
+  font-size: 14px;
+  opacity: 0.9;
+}
+/* ---------- MIST OVERLAY ---------- */
+.mist {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  pointer-events: none;
+  animation: mistFade 0.9s ease-out forwards;
+}
+
+/* Priority colors */
+.mist.low {
+  background: radial-gradient(circle, rgba(255,200,180,0.7), rgba(255,200,180,0.9));
+}
+
+.mist.medium {
+  background: radial-gradient(circle, rgba(180,180,180,0.7), rgba(140,140,140,0.9));
+}
+
+.mist.high {
+  background: radial-gradient(circle, rgba(0,80,60,0.7), rgba(0,50,40,0.95));
+}
+
+/* Mist animation */
+@keyframes mistFade {
+  0% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+  70% {
+    opacity: 0.9;
+    filter: blur(20px);
+  }
+  100% {
+    opacity: 0;
+    filter: blur(40px);
+  }
+}
+
+/* ---------- TASK EMERGENCE ---------- */
+.task-item {
+  animation: emerge 0.6s ease-out;
+}
+
+@keyframes emerge {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+/* Priority badges */
+.priority {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+  margin-left: 8px;
+  display: inline-block;
+}
+
+/* Easy / Low */
+.priority.low {
+  background-color: #2ecc71; /* green */
+}
+
+/* Medium */
+.priority.medium {
+  background-color: #f1c40f; /* yellow */
+  color: #333;
+}
+
+/* Hard / High */
+.priority.high {
+  background-color: #e74c3c; /* red */
+}
+/* Task action buttons container */
+.task-actions {
   margin-top: 10px;
+  display: flex;
+  gap: 10px;
 }
+
+/* Base style for action buttons */
+.task-actions button {
+  border: none;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+/* Complete button */
+.complete-btn {
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  color: white;
+}
+
+.complete-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(46, 204, 113, 0.4);
+}
+
+/* Delete button */
+.delete-btn {
+  background: linear-gradient(135deg, #ff7675, #d63031);
+  color: white;
+}
+
+.delete-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(214, 48, 49, 0.4);
+}
+
+/* Completed task look */
+.completed {
+  opacity: 0.6;
+  text-decoration: line-through;
+  filter: grayscale(40%);
+}
+
