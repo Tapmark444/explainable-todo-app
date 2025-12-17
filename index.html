@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Explainable To-Do App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>Explainable To-Do App</h1>
+
+  <div class="task-box">
+    <input id="task" placeholder="Task name">
+    
+    <select id="difficulty">
+      <option value="1">Easy</option>
+      <option value="2">Medium</option>
+      <option value="3">Hard</option>
+    </select>
+
+    <input id="time" type="number" placeholder="Time (hours)">
+    <button onclick="addTask()">Add Task</button>
+  </div>
+
+  <ul id="taskList"></ul>
+
+  <script src="script.js"></script>
+</body>
+</html>
