@@ -215,6 +215,48 @@ body.dark .task-item {
   margin-top: 10px;
   display: flex;
   gap: 10px;
+
+}
+
+/* Base style for action buttons */
+.task-actions button {
+  border: none;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+/* Complete button */
+.complete-btn {
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  color: white;
+}
+
+.complete-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(46, 204, 113, 0.4);
+}
+
+/* Delete button */
+.delete-btn {
+  background: linear-gradient(135deg, #ff7675, #d63031);
+  color: white;
+}
+
+.delete-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(214, 48, 49, 0.4);
+}
+
+/* Completed task look */
+.completed {
+  opacity: 0.6;
+  text-decoration: line-through;
+  filter: grayscale(40%);
+
 }
 
 /* Base style for action buttons */
